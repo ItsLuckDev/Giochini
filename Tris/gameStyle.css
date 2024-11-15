@@ -1,0 +1,212 @@
+body {
+  font-family: 'Times New Roman', serif; /* gives an ancient look */
+  background: #3e3e3e; /* Dark stone base color */
+  color: #c0c0c0; /* Light stone-like text color */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  background-image: url('path/to/stone-texture.jpg'); /* Replace with a stone texture image */
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+
+#field-container {
+  background: rgba(60, 60, 60, 0.9); /* Semi-transparent stone-like background */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.7);
+  position: relative; /* This will allow absolutely positioned elements inside it to align relative to it */
+  margin-top: 60px; /* Add some space to make room for the winner banner */
+  text-align: center; /* Center-align content */
+}
+
+table#gameField {
+  width: 300px;
+  height: 300px;
+  border-collapse: collapse;
+  box-shadow: inset 0px 0px 8px #000000; /* Makes it look carved in */
+}
+
+table#gameField td {
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
+  background: #4a4a4a; /* Dark stone color */
+  border: 1px solid #6c6c6c;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 2em;
+  color: #e0e0e0;
+  font-family: 'Georgia', serif; /* Adds to the stone look */
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.5), 
+              inset -2px -2px 5px rgba(60, 60, 60, 0.5); /* Carved effect */
+}
+
+/* Points Container */
+#points-container {
+  margin-top: 20px; /* Space between game field and points container */
+  text-align: center;
+}
+
+#points-container table {
+  width: 300px;
+  border-collapse: collapse;
+  background: #4a4a4a; /* Dark stone color */
+  box-shadow: inset 0px 0px 8px #000000; /* Carved-in effect */
+  color: #e0e0e0; /* Light stone-like text color */
+  font-family: 'Georgia', serif; /* Consistent font with game field */
+  border-radius: 5px; /* Slightly rounded corners for a cohesive look */
+}
+
+#points-container td {
+  width: 75px; /* Each cell takes an appropriate width */
+  height: 50px; /* Consistent height for a visual match */
+  padding: 10px;
+  border: 1px solid #6c6c6c;
+  text-align: center;
+  vertical-align: middle;
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.5),
+              inset -2px -2px 5px rgba(60, 60, 60, 0.5); /* Carved effect */
+  font-size: 1.5em; /* Slightly smaller than game field cells */
+}
+
+/* Winner Banner */
+#winnerBanner {
+  position: absolute;
+  top: 150px; /* Positions it above the game field */
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-align: center;
+  z-index: 10;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.hidden {
+  display: none;
+}
+
+/* Overlay */
+#overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0); /* Transparent by default */
+  z-index: 10; /* Ensures it stays above the table */
+  display: none; /* Hidden initially */
+}
+
+#reset-container {
+  margin-top: 20px; /* Add space between the points container and the button */
+  text-align: center; /* Center-align the button below the game field */
+}
+
+#resetButton, #reStartMatch{
+  background-color: #4a4a4a; /* Dark stone-like color for button */
+  color: #e0e0e0; /* Light text color */
+  border: none;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5), 
+              -2px -2px 5px rgba(60, 60, 60, 0.5); /* Gives it a slight carved effect */
+}
+
+#resetButton:hover{
+  background-color: #6c6c6c; /* Lighter color on hover */
+}
+
+#reStartMatch{
+  background-color: rgb(101, 0, 0);
+}
+
+#reStartMatch:hover{
+  background-color: palevioletred;
+}
+
+#buttonTab td{
+  width: 150px;
+  padding: 5%;
+}
+
+
+
+/* Main container styles */
+#main-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch; /* Makes both sections the same height */
+  gap: 40px;
+  padding-top: 60px;
+}
+
+/* Game section remains centered */
+#game-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Aside for "classifica" */
+#aside-container {
+  display: flex;
+  align-items: center;
+  height: 100%; /* Ensures aside grows with game field */
+}
+
+/* Styling for the classifica container */
+#classifica-container {
+  background: rgba(60, 60, 60, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.7);
+  height: 100%; /* Fills full height of the container */
+  display: flex;
+  align-items: center;
+}
+
+/* Basic table styling */
+#classifica {
+  width: 100%;
+  border-collapse: collapse; /* Removes gaps between cells */
+}
+
+#classifica th {
+  font-size: 1.5em;
+  padding: 10px;
+  text-align: center;
+  background-color: rgba(80, 80, 80, 0.9);
+  color: #fff;
+  border-radius: 10px 10px 0 0;
+}
+
+/* Styling for rows and cells */
+#classifica tr {
+  height: 50px; /* Set a fixed height for each row to match cell height */
+}
+
+#classifica td {
+  padding: 10px;
+  text-align: center;
+  font-size: 1em;
+  background-color: rgba(70, 70, 70, 0.8);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Light border for label effect */
+}
+
+/* Label-like appearance */
+#classifica td {
+  font-weight: bold;
+  border-radius: 5px; /* Slight rounding for a label feel */
+}

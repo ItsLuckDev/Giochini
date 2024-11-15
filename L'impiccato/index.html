@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Hanged Man</title>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="gameContainer">
+        <h1>
+            <span>
+                <span>Il Gioco dell'Impiccato</span><br>
+            </span>
+        </h1>
+        <div id="gibbet" class="gibbet">
+            <div class="part top"></div>
+            <div class="part rope"></div>
+        </div>
+        <div id="censoredWordContainer"></div>
+        <div class="container">
+            <button onclick='checkValue(this)'>A</button>
+            <button onclick='checkValue(this)'>B</button>
+            <button onclick='checkValue(this)'>C</button>
+            <button onclick='checkValue(this)'>D</button>
+            <button onclick='checkValue(this)'>E</button>
+            <button onclick='checkValue(this)'>F</button>
+            <button onclick='checkValue(this)'>G</button>
+            <button onclick='checkValue(this)'>H</button>
+            <button onclick='checkValue(this)'>I</button>
+            <button onclick='checkValue(this)'>J</button>
+            <button onclick='checkValue(this)'>K</button>
+            <button onclick='checkValue(this)'>L</button>
+            <button onclick='checkValue(this)'>M</button>
+            <button onclick='checkValue(this)'>N</button>
+            <button onclick='checkValue(this)'>O</button>
+            <button onclick='checkValue(this)'>P</button>
+            <button onclick='checkValue(this)'>Q</button>
+            <button onclick='checkValue(this)'>R</button>
+            <button onclick='checkValue(this)'>S</button>
+            <button onclick='checkValue(this)'>T</button>
+            <button onclick='checkValue(this)'>U</button>
+            <button onclick='checkValue(this)'>V</button>
+            <button onclick='checkValue(this)'>W</button>
+            <button onclick='checkValue(this)'>X</button>
+            <button onclick='checkValue(this)'>Y</button>
+            <button onclick='checkValue(this)'>Z</button>
+        </div>
+
+        <div class="container">
+            <label for="guessWord"></label>
+            <input type="text" name="guessWord" id="guessW" placeholder="scegli la parola!" autocomplete="off">
+            <button onclick="startGame()" title="startGame" id="accW">Scegli!</button>
+
+        </div>
+
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <p id="modal-message"></p>
+                <p id="modal-submessage"></p>
+                <p id="modal-refresh-message"></p>
+            </div>
+        </div>
+
+</body>
+
+</html>

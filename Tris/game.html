@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game</title>
+    <link rel="stylesheet" href="gameStyle.css" />
+  </head>
+
+  <body>
+    <div id="main-container">
+      <section id="game-section">
+        <div id="field-container">
+          <div id="overlay"></div>
+          <table id="gameField"></table>
+        </div>
+
+        <!-- Winner Banner -->
+        <div id="winnerBanner" class="hidden">
+          <p id="winnerText"></p>
+        </div>
+
+        <div id="points-container">
+          <table>
+            <tr>
+              <td id="X">X</td>
+              <td id="Xpoints"></td>
+              <td id="O">O</td>
+              <td id="Opoints"></td>
+            </tr>
+          </table>
+        </div>
+
+        <table id="buttonTab">
+          <tr>
+            <td id="resTdContainer">
+              <div id="reset-container">
+                <button
+                  type="button"
+                  onclick="resetGame('resMatch')"
+                  id="resetButton"
+                >
+                  Re-match
+                </button>
+              </div>
+            </td>
+            <td>
+              <div id="reset-container">
+                <button
+                  type="button"
+                  onclick="resetGame('resAll')"
+                  id="reStartMatch"
+                >
+                  restart
+                </button>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </section>
+
+      <aside></aside>
+
+      <aside id="aside-container">
+          <table id="classifica">
+            <thead>
+              <tr>
+                <th>🏆 Classifica 🏆</th>
+              </tr>
+            </thead>
+            <tbody id="player-list">
+            </tbody>
+          </table>
+      </aside>
+    </div>
+
+    <script src="gameMechanics.js"></script>
+  </body>
+</html>

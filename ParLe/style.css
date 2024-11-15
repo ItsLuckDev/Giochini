@@ -1,0 +1,140 @@
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    text-align: center;
+    position: absolute;
+    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/751678/my-illustration-foreground.png');
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: 100% auto;
+    font-size: 10px;
+}
+
+body {
+    font-size: medium;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    color: #455A64;
+    background-color: #7E57C2;
+    font-family: 'Rocher', sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Dosis');
+
+@font-face {
+    font-family: 'Rocher';
+    src: url(https://assets.codepen.io/9632/RocherColorGX.woff2) format('woff2');
+}
+
+button {
+    /*Inner ELemnts*/
+    font-family: 'Rocher', sans-serif;
+    font-size: medium;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 5px solid #fff;
+    border-radius: 20px;
+    background-color: #22313f;
+    width: 20%;
+    background: linear-gradient(to bottom, #22313f, #34495e);
+
+    /*Outer side*/
+    padding: 10px;
+    border: 1px solid #22313f;
+    border-radius: 15px;
+    color: white;
+}
+
+input {
+    /*Inner ELemnts*/
+    font-family: 'Rocher', sans-serif;
+    font-size: medium;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 5px solid #9B59B6;
+    border-radius: 20px;
+    background-color: #22313f;
+    width: 20%;
+    background: linear-gradient(to bottom, #22313f, #34495e);
+
+
+
+}
+
+#resultTable {
+    font-size: medium;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 5px solid #fff;
+    border-radius: 25px;
+    overflow: hidden;
+    background-color: #22313f;
+    border-collapse: collapse;
+    width: 80%;
+    background: linear-gradient(to bottom, #22313f, #34495e);
+}
+
+#resultTable td {
+    padding: 10px;
+    border: 1px solid #22313f;
+    border-radius: 15px;
+    color: white;
+}
+
+#resultTable td:not(:first-child) {
+    margin-left: 10px;
+}
+
+#resultTable .founded {
+    background-color: #2ecc71;
+}
+
+#resultTable .partially-founded {
+    background-color: #f1c40f;
+}
+
+#resultTable .not-founded {
+    background-color: #e74c3c;
+}
+
+body::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: 100% auto;
+    opacity: 0.5;
+}
+
+input {
+    padding: 5px;
+    font-size: 16px;
+}
+
+h1 {
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 50px;
+    ;
+}
+
+p {
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 30px;
+}

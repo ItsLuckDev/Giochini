@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tris</title>
+    <style>
+        .wrapper {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: top;
+            align-items: top;
+        }
+
+        h1 {
+            font-size: 100px;
+            text-transform: uppercase;
+            font-family: 'Gambetta', serif;
+            letter-spacing: -3px;
+            transition: 700ms ease;
+            font-variation-settings: "wght" 311;
+            margin-bottom: 0.8rem;
+            color: #FF3366;
+            outline: none;
+            text-align: center;
+        }
+
+        h1:hover {
+            font-variation-settings: "wght" 582;
+            letter-spacing: 1px;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            background: linear-gradient(45deg, #49a09d, #5f2c82);
+            font-family: sans-serif;
+            font-weight: 100;
+        }
+
+        button {
+            padding: 45px;
+            font-size: 30px;
+            border: none;
+            background: none;
+            color: #fff
+        }
+
+
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .pointsContainer {
+            position: fixed;
+            right: 30%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            margin: 0 auto;
+        }
+
+        .tablePoints {
+            font-size: large;
+            padding: 15px;
+        }
+
+        .resButton {
+            position: fixed;
+            left: 50%;
+            bottom: 65px;
+            transform: translate(-50%, -50%);
+            margin: 0 auto;
+
+            font-size: medium;
+            border: 5px solid #fff;
+            border-radius: 20px;
+            width: 20%;
+            background: linear-gradient(to bottom, #e61919, #c63939);
+
+            /*Outer side*/
+            padding: 10px;
+            border: 1.5px solid #22313f;
+            border-radius: 15px;
+            color: white;
+        }
+
+        .setZero {
+            position: fixed;
+            left: 50%;
+            bottom: 1%;
+            transform: translate(-50%, -50%);
+            margin: 0 auto;
+
+            font-size: medium;
+            border: 5px solid #fff;
+            border-radius: 20px;
+            width: 20%;
+            background: linear-gradient(to bottom, #2eb82e, #248f24);
+
+            /*Outer side*/
+            padding: 10px;
+            border: 1.5px solid #22313f;
+            border-radius: 15px;
+            color: white;
+        }
+
+        table {
+            border-collapse: collapse;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        th,
+        td {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+
+        th {
+            text-align: left;
+        }
+
+        tbody {
+            tr {
+                &:hover {
+                    background-color: rgba(255, 255, 255, 0.3);
+                }
+            }
+
+            td {
+                position: relative;
+
+                &:hover {
+                    &:before {
+                        content: "";
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                        top: -9999px;
+                        bottom: -9999px;
+                        background-color: rgba(255, 255, 255, 0.2);
+                        z-index: -1;
+                    }
+                }
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <h1>Tris</h1>
+    </div>
+
+
+    <div class="container">
+        <table id="myTable">
+            <tr>
+                <td><button onclick="buttonClick(this)">&nbsp;</button></td>
+                <td><button onclick="buttonClick(this)">&nbsp;</button></td>
+                <td><button onclick="buttonClick(this)">&nbsp;</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="buttonClick(this)">&nbsp;</button></td>
+                <td><button onclick="buttonClick(this)">&nbsp;</button></td>
+                <td><button onclick="buttonClick(this)">&nbsp;</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="buttonClick(this)">&nbsp;</button></td>
+                <td><button onclick="buttonClick(this)">&nbsp;</button></td>
+                <td><button onclick="buttonClick(this)">&nbsp;</button></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="pointsContainer">
+        <table>
+            <tr>
+                <td class="tablePoints">X:</td>
+                <td class="tablePoints"><span id="x_points">0</span></td>
+            </tr>
+            <tr>
+                <td class="tablePoints">O:</td>
+                <td class="tablePoints"><span id="o_points">0</span></td>
+            </tr>
+        </table>
+    </div>
+
+    <button class="resButton" title="RESET" onclick="newGame('myTable')">Nuovo Match</button>
+    <button class="setZero" onclick="setZero()">Ricomincia la partia</button>
+
+    <script>
+        function tableToButtonArray(tableId, dataArray) {
+            var table = document.getElementById(tableId);
+            dataArray = [];
+
+            for (var i = 0; i < table.rows.length; i++) {
+                var row = table.rows[i];
+                var rowData = [];
+
+                for (var j = 0; j < row.cells.length; j++) {
+                    var buttonContent = row.cells[j].querySelector('button').innerText;
+                    rowData.push(buttonContent);
+                }
+
+                dataArray.push(rowData);
+            }
+
+            return dataArray;
+        }
+
+        var turn = 0;
+
+        function buttonClick(button) {
+            if (turn == 0) {
+                button.innerHTML = "X";
+                button.disabled = true;
+            }
+
+            if (turn == 1) {
+                button.innerHTML = "O";
+                button.disabled = true;
+            }
+            turn = 1 - turn;
+
+            var gameField = tableToButtonArray('myTable');
+
+            //gestione delle vittorie
+            //righe
+            for (let i = 0; i < 3; i++) {
+                if ((gameField[i].toString() == "X,X,X")) {
+                    gameFinished("X");
+                }
+                else if ((gameField[i].toString() == "O,O,O")) {
+                    gameFinished("O");
+                }
+            }
+
+
+            //colonne
+            for (let j = 0; j < 3; j++) {
+                if (gameField[0][j] == gameField[1][j] && gameField[1][j] == gameField[2][j] && gameField[2][j] == "X") gameFinished("X");
+                if (gameField[0][j] == gameField[1][j] && gameField[1][j] == gameField[2][j] && gameField[2][j] == "O") gameFinished("O");
+            }
+
+            //diagonali
+            if (gameField[0][0] == gameField[1][1] && gameField[1][1] == gameField[2][2] && gameField[2][2] == "X") gameFinished("X");
+            if (gameField[0][0] == gameField[1][1] && gameField[1][1] == gameField[2][2] && gameField[2][2] == "O") gameFinished("O");
+            if (gameField[0][2] == gameField[1][1] && gameField[1][1] == gameField[2][0] && gameField[2][0] == "X") gameFinished("X");
+            if (gameField[0][2] == gameField[1][1] && gameField[1][1] == gameField[2][0] && gameField[2][0] == "O") gameFinished("O");
+        }
+
+        function gameFinished(symbol) {
+            x = document.getElementById("x_points")
+            x_to_num = parseInt(x.innerHTML)
+
+            o = document.getElementById("o_points")
+            o_to_num = parseInt(x.innerHTML)
+            if (symbol == "X") x.innerHTML = x_to_num + 1
+            if (symbol == "O") o.innerHTML = o_to_num + 1
+        }
+
+
+        function newGame() {
+            var table = document.getElementById("myTable");
+
+            for (var i = 0; i < table.rows.length; i++) {
+                var row = table.rows[i];
+
+                for (var j = 0; j < row.cells.length; j++) {
+                    var button = row.cells[j].querySelector('button');
+                    button.innerHTML = "&nbsp;";
+                    button.disabled = false;
+                }
+            }
+        }
+
+        function setZero() {
+            x = document.getElementById("x_points")
+            x.innerHTML = 0;
+
+            o = document.getElementById("o_points")
+            o.innerHTML = 0;
+
+            newGame()
+            turn = 0;
+        }
+    </script>
+</body>
+
+</html>

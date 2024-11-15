@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wordle IT</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <script src="script.js"></script>
+
+    <h1 class="purples">ParLe</h1>
+    <p id="state">Prova a indovinare la parola segreta!</p>
+
+    <form onsubmit="event.preventDefault(); checkGuess();">
+        <label for="guess">Your Guess:</label>
+        <input type="text" id="guess" required autocomplete="off">
+    </form>
+
+    <table id="resultTable"></table><br>
+    <p id="s_word"></p>
+    <button id="myButton" onclick="location.reload()"> Fai un'altra partita </button>
+</body>
+
+</html>
